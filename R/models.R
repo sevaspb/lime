@@ -237,7 +237,13 @@ model_type.keras.engine.training.Model <- function(x, ...) {
   if (!requireNamespace('keras', quietly = TRUE)) {
     stop('The keras package is required for predicting keras models')
   }
-  if (keras::get_layer(x, index = -1)$activation.__name__ == 'linear') {
+  
+#  The line works fine with python 2.7 + keras + cntk (tensorflow is not supported)
+#  if (keras::get_layer(x, index = -1)$activation$func_name == 'linear') {
+#  
+#  In python 3 func_name was renamed __name__, but "activation$__name__" is not supported in R
+#  Therefore func_name was removed. Not sure if this change is correct, however it works for now.
+  if (keras::get_layer(x, index = -1)$activation == 'linear') {
     'regression'
   } else {
     'classification'
