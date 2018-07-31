@@ -237,13 +237,10 @@ model_type.keras.engine.training.Model <- function(x, ...) {
   if (!requireNamespace('keras', quietly = TRUE)) {
     stop('The keras package is required for predicting keras models')
   }
-  print(keras::get_layer(x, index = -1)$activation$f.__name__)
-  if (keras::get_layer(x, index = -1)$activation$f.__name__ == 'sigmoid') {
-    print('sigmoid')
+  if (keras::get_layer(x, index = -1)$activation.__name__ == 'linear') {
     'regression'
   } else {
     'classification'
-    print('not sigmoid')
   }
 }
 #' @export
