@@ -237,7 +237,7 @@ model_type.keras.engine.training.Model <- function(x, ...) {
   if (!requireNamespace('keras', quietly = TRUE)) {
     stop('The keras package is required for predicting keras models')
   }
-  print(keras::get_layer(x, index = -1)$activation)
+  print(keras::get_layer(x, index = -1)$activation$name)
   if (keras::get_layer(x, index = -1)$activation == 'linear') {
     'regression'
   } else {
