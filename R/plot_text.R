@@ -71,7 +71,7 @@ plot_text_explanations <- function(explanations, ...) {
     list(html = text_highlighted),
     sizingPolicy = htmlwidgets::sizingPolicy(
       knitr.figure = FALSE,
-      defaultHeight = "auto",
+      knitr.defaultHeight = "auto",
       knitr.defaultWidth = "100%",
       ...
     ),
